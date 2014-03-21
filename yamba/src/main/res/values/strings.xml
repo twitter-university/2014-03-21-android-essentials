@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Yamba</string>
+    <string name="tweet_title_text">New Tweet</string>
+    <string name="action_settings">Settings</string>
+    <string name="button_tweet_text">Tweet</string>
+    <string name="edit_msg_hint">Compose new Tweet...</string>
+
+</resources>

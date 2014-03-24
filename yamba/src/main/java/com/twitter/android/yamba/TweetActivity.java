@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-
-public class TweetActivity extends Activity {
+public class TweetActivity extends Activity
+        implements View.OnClickListener {
 
     private static final String TAG = "TweetActivity";
     EditText mEditMsg;
@@ -23,9 +23,14 @@ public class TweetActivity extends Activity {
 
         mEditMsg = (EditText) findViewById(R.id.edit_msg);
         Button buttonTweet = (Button) findViewById(R.id.button_tweet);
-        buttonTweet.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        buttonTweet.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        switch (id) {
+            case R.id.button_tweet:
                 if (BuildConfig.DEBUG) Log.d(TAG, "Tweet button clicked");
 
                 String msg = mEditMsg.getText().toString();
@@ -33,8 +38,9 @@ public class TweetActivity extends Activity {
                     Log.d(TAG, "User entered: " + msg);
                     mEditMsg.setText("");
                 }
-            }
-        });
+            default:
+                // Unknown button clicked?
+                Log.w(TAG, "What was that?");
+        }
     }
-
 }

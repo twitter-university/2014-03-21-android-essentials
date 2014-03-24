@@ -13,6 +13,11 @@ public class PostTweetService extends IntentService {
     private static final String TAG = "PostTweetService";
 
     public static final String EXTRA_TWEET_MSG = "EXTRA_TWEET_MSG";
+    public static final String EXTRA_TWEET_POST_STATUS = "EXTRA_TWEET_POST_STATUS";
+    public static final String ACTION_TWEET_POST_STATUS
+            = "com.twitter.android.yamba.ACTION_TWEET_POST_STATUS";
+    public static final String PERM_TWEET_POST_STATUS
+            = "com.twitter.android.yamba.permission.TWEET_POST_STATUS";
 
     YambaClient mYambaClient;
 
@@ -36,6 +41,9 @@ public class PostTweetService extends IntentService {
                 Log.e(TAG, "Failed to post status", e);
             }
         }
-        // TODO: Notify observers of post attempt status
+        // Notify observers of post attempt status
+        Intent broadcast = new Intent(ACTION_TWEET_POST_STATUS);
+        broadcast.putExtra(EXTRA_TWEET_POST_STATUS, result);
+        sendBroadcast(broadcast, PERM_TWEET_POST_STATUS);
     }
 }

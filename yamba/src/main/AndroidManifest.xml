@@ -2,7 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.twitter.android.yamba" >
 
+    <permission
+        android:name="com.twitter.android.yamba.permission.TWEET_POST_STATUS"
+        android:protectionLevel="signature"/>
+
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.twitter.android.yamba.permission.TWEET_POST_STATUS" />
 
     <application
         android:allowBackup="true"
@@ -23,6 +28,16 @@
             android:name="com.twitter.android.yamba.PostTweetService"
             android:exported="false" >
         </service>
+
+        <receiver
+            android:name="com.twitter.android.yamba.PostTweetReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="com.twitter.android.yamba.permission.TWEET_POST_STATUS">
+            <intent-filter>
+                <action android:name="com.twitter.android.yamba.ACTION_TWEET_POST_STATUS" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

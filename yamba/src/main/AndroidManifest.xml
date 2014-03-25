@@ -4,7 +4,7 @@
 
     <permission
         android:name="com.twitter.android.yamba.permission.TWEET_POST_STATUS"
-        android:protectionLevel="signature"/>
+        android:protectionLevel="signature" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.twitter.android.yamba.permission.TWEET_POST_STATUS" />
@@ -17,11 +17,6 @@
         <activity
             android:name="com.twitter.android.yamba.TweetActivity"
             android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <service
@@ -33,11 +28,21 @@
             android:name="com.twitter.android.yamba.PostTweetReceiver"
             android:enabled="true"
             android:exported="true"
-            android:permission="com.twitter.android.yamba.permission.TWEET_POST_STATUS">
+            android:permission="com.twitter.android.yamba.permission.TWEET_POST_STATUS" >
             <intent-filter>
                 <action android:name="com.twitter.android.yamba.ACTION_TWEET_POST_STATUS" />
             </intent-filter>
         </receiver>
+
+        <activity
+            android:name="com.twitter.android.yamba.TimelineActivity"
+            android:label="@string/title_activity_timeline" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

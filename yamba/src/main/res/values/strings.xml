@@ -8,5 +8,7 @@
     <string name="edit_msg_hint">Compose new Tweet...</string>
     <string name="post_tweet_success">Tweet posted successfully</string>
     <string name="post_tweet_fail">Failed to post tweet</string>
+    <string name="title_activity_timeline">Timeline</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

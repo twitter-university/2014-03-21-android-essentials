@@ -8,6 +8,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.twitter.android.yamba.permission.TWEET_POST_STATUS" />
+    <uses-permission android:name="com.twitter.university.android.yamba.timeline.permission.READ" />
 
     <application
         android:allowBackup="true"

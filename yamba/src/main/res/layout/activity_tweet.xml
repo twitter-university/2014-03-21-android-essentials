@@ -21,21 +21,12 @@
         android:textSize="20sp"
         android:textStyle="bold"/>
 
-    <EditText
+    <fragment
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:inputType="textMultiLine"
-            android:ems="10"
-            android:id="@+id/edit_msg"
-            android:hint="@string/edit_msg_hint"/>
-
-    <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/button_tweet_text"
-            android:id="@+id/button_tweet"
+            android:layout_height="match_parent"
+            android:name="com.twitter.android.yamba.TweetFragment"
+            android:id="@+id/fragment_tweet"
             android:layout_gravity="center_horizontal"
-            />
+            tools:layout="@layout/fragment_tweet"/>
 
 </LinearLayout>

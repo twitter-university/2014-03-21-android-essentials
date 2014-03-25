@@ -11,11 +11,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class TweetActivity extends Activity
-        implements View.OnClickListener {
+        implements TweetFragment.OnTweetPostedListener {
 
     private static final String TAG = "TweetActivity";
-    EditText mEditMsg;
-    Toast mToast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,38 +21,12 @@ public class TweetActivity extends Activity
         if (BuildConfig.DEBUG) Log.d(TAG, "onCreate() invoked");
 
         setContentView(R.layout.activity_tweet);
-
-        mToast = Toast.makeText(getApplicationContext(), null, Toast.LENGTH_LONG);
-        mEditMsg = (EditText) findViewById(R.id.edit_msg);
-        Button buttonTweet = (Button) findViewById(R.id.button_tweet);
-        buttonTweet.setOnClickListener(this);
-    }
-
-    public void showToast(int stringId) {
-        mToast.setText(stringId);
-        mToast.show();
+        TweetFragment f = (TweetFragment) getFragmentManager().findFragmentById(R.id.fragment_tweet);
+        f.setOnTweetPostedListener(this);
     }
 
     @Override
-    public void onClick(View v) {
-        int id = v.getId();
-        switch (id) {
-            case R.id.button_tweet:
-                if (BuildConfig.DEBUG) Log.d(TAG, "Tweet button clicked");
-
-                String msg = mEditMsg.getText().toString();
-                if (!TextUtils.isEmpty(msg)) {
-                    Log.d(TAG, "User entered: " + msg);
-                    mEditMsg.setText("");
-                    // Start the service to post the tweet
-                    Intent intent = new Intent(this, PostTweetService.class);
-                    intent.putExtra(PostTweetService.EXTRA_TWEET_MSG, msg);
-                    startService(intent);
-                }
-                break;
-            default:
-                // Unknown button clicked?
-                Log.w(TAG, "What was that?");
-        }
+    public void onTweetPosted() {
+        finish();
     }
 }

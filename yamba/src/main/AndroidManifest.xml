@@ -36,8 +36,7 @@
         </receiver>
 
         <activity
-            android:name="com.twitter.android.yamba.TimelineActivity"
-            android:label="@string/title_activity_timeline" >
+            android:name="com.twitter.android.yamba.TimelineActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
